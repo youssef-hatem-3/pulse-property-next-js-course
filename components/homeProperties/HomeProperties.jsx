@@ -1,11 +1,18 @@
 import React from 'react'
 import PropertyCard from '@/components/propertyCard/PropertyCard.jsx';
-import properties from '@/properties.json';
 import Link from 'next/link';
+import connectDB from '@/config/database';
+import Property from '@/models/Property';
 
-export default function HomeProperties() {
+ const HomeProperties = async () => {
 
-    const recentProperties = properties.slice(0,3);
+  await connectDB();
+
+  // Get the 3 latest properties
+  const recentProperties = await Property.find({})
+    .sort({ createdAt: -1 })
+    .limit(3)
+    .lean();
 
   return (
     <>
@@ -34,3 +41,4 @@ export default function HomeProperties() {
     </>
   )
 }
+export default HomeProperties ;
