@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,11 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: 'PropertyPulse',
-  description: 'Find The Perfect Rental Property',
-  keywords: 'rental, property, real estate',
+  title: "PropertyPulse",
+  description: "Find The Perfect Rental Property",
+  keywords: "rental, property, real estate",
 };
-
 
 export default function RootLayout({ children }) {
   return (
@@ -26,9 +26,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar/>
-        {children}
-        <Footer/>
+        <AuthProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
