@@ -1,19 +1,22 @@
 'use client';
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { FaGoogle } from 'react-icons/fa';
 import logo from '@/assets/images/logo-white.png';
 import profileDefault from '@/assets/images/profile.png';
-import { FaGoogle } from 'react-icons/fa';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+
 
 const Navbar = () => {
   const { data: session } = useSession();
-  const [providers, setProviders] = useState(null);
+  const sessionTest = useSession();
+  const profileImage = session?.user?.image;
+  console.log(sessionTest);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [providers, setProviders] = useState(null);
 
   const pathname = usePathname();
 
@@ -24,6 +27,11 @@ const Navbar = () => {
     };
 
     setAuthProviders();
+
+    // NOTE: close mobile menu if the viewport size is changed
+    window.addEventListener('resize', () => {
+      setIsMobileMenuOpen(false);
+    });
   }, []);
 
   return (
@@ -145,7 +153,6 @@ const Navbar = () => {
                     />
                   </svg>
                 </button>
-                <UnreadMessageCount />
               </Link>
               {/* <!-- Profile dropdown button --> */}
               <div className='relative ml-3'>
@@ -276,5 +283,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;
