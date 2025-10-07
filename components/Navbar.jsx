@@ -7,13 +7,12 @@ import { FaGoogle } from 'react-icons/fa';
 import logo from '@/assets/images/logo-white.png';
 import profileDefault from '@/assets/images/profile.png';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
-
+import UnreadMessageCount from './UnreadMessageCount';
 
 const Navbar = () => {
   const { data: session } = useSession();
-  const sessionTest = useSession();
   const profileImage = session?.user?.image;
-  console.log(sessionTest);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [providers, setProviders] = useState(null);
@@ -153,6 +152,7 @@ const Navbar = () => {
                     />
                   </svg>
                 </button>
+                {/* <UnreadMessageCount /> */}
               </Link>
               {/* <!-- Profile dropdown button --> */}
               <div className='relative ml-3'>

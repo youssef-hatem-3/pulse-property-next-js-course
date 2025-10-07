@@ -1,4 +1,4 @@
-import PropertyCard from '@/components/propertyCard/PropertyCard.jsx';
+import PropertyCard from '@/components/PropertyCard.jsx';
 import Property from '@/models/Property';
 import connectDB from '@/config/database';
 

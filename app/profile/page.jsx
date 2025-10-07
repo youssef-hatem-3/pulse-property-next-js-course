@@ -3,7 +3,7 @@ import connectDB from '@/config/database';
 import Property from '@/models/Property';
 import { getSessionUser } from '@/utils/getSessionUser';
 import profileDefault from '@/assets/images/profile.png';
-import ProfileProperties from '@/components/profileProperities/ProfileProperties.jsx';
+import ProfileProperties from '@/components/ProfileProperties.jsx';
 import { convertToSerializeableObject } from '@/utils/convertToObject';
 
 const ProfilePage = async () => {

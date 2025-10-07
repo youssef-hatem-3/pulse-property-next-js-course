@@ -1,6 +1,6 @@
-import Hero from "@/components/hero/Hero";
-import InfoBoxes from "@/components/infoBoxes/InfoBoxes";
-import HomeProperties from "@/components/homeProperties/HomeProperties";
+import Hero from "@/components/Hero";
+import InfoBoxes from "@/components/InfoBoxes";
+import HomeProperties from "@/components/HomeProperties";
 import connectDB from "@/config/database";
 
 
