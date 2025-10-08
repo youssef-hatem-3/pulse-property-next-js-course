@@ -1,4 +1,4 @@
-import PropertyAddForm from '@/components/PropertyAddForm/PropertyAddForm.jsx';
+import PropertyAddForm from '@/components/PropertyAddForm.jsx';
 
 const PropertyAddPage = () => {
   return (
